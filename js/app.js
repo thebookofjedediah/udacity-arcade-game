@@ -1,9 +1,11 @@
+// According to engine.js x=101 and y=83 in size
+// From top: y = -23, 60, 143, 226, 309, 392
+
 // Enemies our player must avoid
 var Enemy = function(x,y,speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
-    // According to engine.js x=101 and y=83
     this.x = x;
     this.y = y;
     this.speed = speed;
@@ -49,7 +51,17 @@ class Player {
   }
   update(){}
   render(){ctx.drawImage(Resources.get(this.sprite), this.x, this.y);}
-  handleInput(){}
+  handleInput(key){
+    if (key === 'left' && this.x > 0){
+      this.x = this.x - 101;
+    } else if (key === 'right' && this.x < 404) {
+      this.x = this.x + 101;
+    } else if (key === 'up' && this.y > -23) {
+      this.y = this.y - 83;
+    } else if (key === 'down' && this.y < 392) {
+      this.y = this.y + 83;
+    }
+  }
 }
 
 // Now instantiate your objects.
