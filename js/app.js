@@ -29,12 +29,13 @@ Enemy.prototype.update = function(dt) {
 
 
 };
-let enemy1 = new Enemy(0,60,100);
-let enemy2 = new Enemy(0,143,100);
+let enemy1 = new Enemy(0,60,222);
+let enemy2 = new Enemy(0,143,111);
 let enemy3 = new Enemy(0,226,100);
 let enemy4 = new Enemy(0,60,150);
 let enemy5 = new Enemy(0,143,200);
 let enemy6 = new Enemy(0,226,250);
+let enemy7 = new Enemy(-101,60,80);
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -46,7 +47,7 @@ Enemy.prototype.render = function() {
 class Player {
   constructor(){
     this.sprite = "images/char-boy.png";
-    this.x = 0;
+    this.x = 202;
     this.y = 392;
   }
   update(){
@@ -55,14 +56,14 @@ class Player {
     //fixed
     for (let enemy of allEnemies) {
       //when sharing roughly 1/2 square with enemy - hit
-        if(this.y === enemy.y && (enemy.x + 55 > this.x && enemy.x - 55 < this.x))
-        {
-          console.log("Loser")
-        }
+      if(this.y === enemy.y && (enemy.x + 55 > this.x && enemy.x - 55 < this.x))
+      {
+        this.reset();
+      }
     }
     // Check for the W
     if (this.y === -23){
-      console.log("Winner"); //works
+      this.winner();
     }
 }
   render(){
@@ -79,11 +80,25 @@ class Player {
       this.y = this.y + 83;
     }
   }
+
+  reset(){
+    this.x = 0;
+    this.y = 392;
+  }
+  winner(){
+    allEnemies.pop();
+    this.x = 202;
+    this.y = 392;
+    if (allEnemies.length === 0){
+      let youWin = document.querySelector(".winner");
+      youWin.innerHTML = "Winner!"
+    }
+  }
 }
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-const allEnemies = [enemy1,enemy2,enemy3,enemy4,enemy5,enemy6]
+let allEnemies = [enemy1,enemy2,enemy4,enemy5,enemy6,enemy7]
 // Place the player object in a variable called player
 const player = new Player();
 

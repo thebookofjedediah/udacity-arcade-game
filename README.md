@@ -3,6 +3,7 @@
 ## Getting Started & Installation
 
 To get started, clone the repository or download the zip file, then open the index.html in a browser of your choice.
+The Game will begin as soon as it is opened in the browser. Each time you make it across to the end you will kill another enemy bug. When all the enemy bugs are gone, you win. 
 
 ### Prerequisites
 
