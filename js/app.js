@@ -2,6 +2,8 @@
 var Enemy = function(x,y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
+
+    // According to engine.js x=101 and y=83
     this.x = x;
     this.y = y;
     // The image/sprite for our enemies, this uses
@@ -16,7 +18,9 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 };
-let enemy1 = new Enemy(0,0)
+let enemy1 = new Enemy(0,60);
+let enemy2 = new Enemy(0,143);
+let enemy3 = new Enemy(0,226);
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -29,7 +33,7 @@ Enemy.prototype.render = function() {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-const allEnemies = [enemy1]
+const allEnemies = [enemy1,enemy2,enemy3]
 // Place the player object in a variable called player
 
 
