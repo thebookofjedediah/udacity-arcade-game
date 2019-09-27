@@ -49,8 +49,21 @@ class Player {
     this.x = 0;
     this.y = 392;
   }
-  update(){}
-  render(){ctx.drawImage(Resources.get(this.sprite), this.x, this.y);}
+  update(){
+    //how to make collision work
+    for (let i = 0; i <= allEnemies.length; i++){
+      if (this.x === i.x) {
+        console.log("Loser"); // not working
+      }
+    }
+    // Check for the W
+    if (this.y === -23){
+      console.log("Winner"); //works
+    }
+  }
+  render(){
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
   handleInput(key){
     if (key === 'left' && this.x > 0){
       this.x = this.x - 101;
