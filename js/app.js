@@ -51,16 +51,20 @@ class Player {
   }
   update(){
     //how to make collision work
-    for (let i = 0; i <= allEnemies.length; i++){
-      if (this.x === i.x) {
-        console.log("Loser"); // not working
-      }
+    //Adapted from: https://knowledge.udacity.com/questions/10129
+    //fixed
+    for (let enemy of allEnemies) {
+      //when sharing roughly 1/2 square with enemy - hit
+        if(this.y === enemy.y && (enemy.x + 55 > this.x && enemy.x - 55 < this.x))
+        {
+          console.log("Loser")
+        }
     }
     // Check for the W
     if (this.y === -23){
       console.log("Winner"); //works
     }
-  }
+}
   render(){
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
