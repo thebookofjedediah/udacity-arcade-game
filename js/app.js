@@ -29,13 +29,6 @@ Enemy.prototype.update = function(dt) {
 
 
 };
-let enemy1 = new Enemy(0,60,222);
-let enemy2 = new Enemy(0,143,111);
-let enemy3 = new Enemy(0,226,100);
-let enemy4 = new Enemy(0,60,150);
-let enemy5 = new Enemy(0,143,200);
-let enemy6 = new Enemy(0,226,250);
-let enemy7 = new Enemy(-101,60,80);
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -56,7 +49,7 @@ class Player {
     //fixed
     for (let enemy of allEnemies) {
       //when sharing roughly 1/2 square with enemy - hit
-      if(this.y === enemy.y && (enemy.x + 55 > this.x && enemy.x - 55 < this.x))
+      if(this.y === enemy.y && (enemy.x + 79 > this.x && enemy.x - 79 < this.x))
       {
         this.reset();
       }
@@ -98,7 +91,14 @@ class Player {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-let allEnemies = [enemy1,enemy2,enemy4,enemy5,enemy6,enemy7]
+const allEnemies = [
+    new Enemy(0,60,222),
+    new Enemy(0,143,111),
+    new Enemy(0,226,15),
+    new Enemy(0,60,150),
+    new Enemy(0,143,200),
+    new Enemy(-101,60,80),
+];
 // Place the player object in a variable called player
 const player = new Player();
 
